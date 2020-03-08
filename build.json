@@ -20,7 +20,7 @@
       "type": "shell",
       "inline": [
 	"sudo apt update -y",
-	"sudo apt install java-1.8.0-openjdk.x86_64 -y",
+	"sudo apt install openjdk-10-source/xenial 10.0.2+13-1~16.04.6 all -y",
 	"sudo apt install wget unzip -y",
 	"sudo wget http://apachemirror.wuchna.com/tomcat/tomcat-8/v8.5.51/bin/apache-tomcat-8.5.51.tar.gz",
 	"sudo wget https://raw.githubusercontent.com/sivakethineni/Charter-Demo-AMI-Creation/master/tomcat-users.xml",
