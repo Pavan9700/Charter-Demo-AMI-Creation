@@ -8,20 +8,20 @@
       "access_key": "{{user `aws_access_key`}}",
       "secret_key": "{{user `aws_secret_key`}}",
       "region": "us-east-2",
-      "source_ami": "ami-0fc20dd1da406780b",
+      "source_ami": "ami-0e38b48473ea57778",
       "instance_type": "t2.micro",
-      "ssh_username": "ubuntu",
-      "ami_name": "tomcat-ami-packer-pr",
-      "name": "tomcat-ami-test-pr"
+      "ssh_username": "ec2-user",
+      "ami_name": "tomcat-ami-packer",
+      "name": "tomcat-ami-test"
     }
   ],
   "provisioners": [
     {
       "type": "shell",
       "inline": [
-	"sudo apt update -y",
-	"sudo apt install openjdk-10-source/xenial 10.0.2+13-1~16.04.6 all -y",
-	"sudo apt install wget unzip -y",
+	"sudo yum update -y",
+	"sudo yum install java-1.8.0-openjdk.x86_64 -y",
+	"sudo yum install wget unzip -y",
 	"sudo wget http://apachemirror.wuchna.com/tomcat/tomcat-8/v8.5.51/bin/apache-tomcat-8.5.51.tar.gz",
 	"sudo wget https://raw.githubusercontent.com/sivakethineni/Charter-Demo-AMI-Creation/master/tomcat-users.xml",
 	"sudo wget https://raw.githubusercontent.com/sivakethineni/Charter-Demo-AMI-Creation/master/context.xml",
@@ -40,8 +40,8 @@
 	"sudo chkconfig --add tomcat",
 	"sudo chkconfig tomcat on",
 	"sudo service tomcat start",
-	"sudo apt install -y ruby",
-        "sudo apt install -y aws-cli",
+	"sudo yum install -y ruby",
+        "sudo yum install -y aws-cli",
         "sudo wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install",
         "sudo chmod +x ./install",
         "sudo ./install auto",
